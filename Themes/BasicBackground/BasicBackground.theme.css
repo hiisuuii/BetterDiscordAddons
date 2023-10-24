@@ -9,17 +9,22 @@
  * @patreon https://www.patreon.com/MircoWittrien
  * @website https://mwittrien.github.io/
  * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Themes/BasicBackground/
- * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Themes/BasicBackground/BasicBackground.theme.css
  */
 
 /* To change stuff like the colors, transparency and background image, change the variables inside the root {}, do NOT change the @import url() */
 
-@import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/BasicBackground/BasicBackground.css);
+@import url('https://rawcdn.githack.com/hiisuuii/BetterDiscordAddons/e5e0c5959d340639d051e328d384176bd31a6294/Themes/BasicBackground/BasicBackground.css');
+
+/* BlackBox tags */
+@import url('https://monstrousdev.github.io/themes/addons/user-tags.css');
+
+/* Old Windows titlebar - remove this @import if you wish to use default titlebar */
+@import url("https://gibbu.github.io/BetterDiscord-Themes/addons/windows-titlebar.css");
 
 :root {
 	--transparencycolor:			0,0,0;						/* default:	0,0,0																								*/
-	--transparencyalpha:			0.15;						/* default: 0.15				(general darkness of the app)													*/
-	--messagetransparency:			0.5;						/* default: 0.5					(additional shadows behind messages, set to 0 to remove boxes)					*/
+	--transparencyalpha:			0.5;						/* default: 0.15				(general darkness of the app)													*/
+	--messagetransparency:			0.3;						/* default: 0.5					(additional shadows behind messages, set to 0 to remove boxes)					*/
 	--guildchanneltransparency:		0.15;						/* default: 0.15				(additional darkness for guild/channel list)									*/
 	--chatinputtransparency:		0.0;						/* default: 0.0					(additional darkness for chat input container)									*/
 	--memberlisttransparency:		0.0;						/* default: 0.0					(additional darkness for member list)											*/
@@ -29,7 +34,7 @@
 	--textshadow:					transparent;				/* default: transparent			(textshadow for text ontop of accentcolor nodes, ONLY accepts a color, no px)	*/
 	--settingsicons:				1;							/* Use Settings Icons in User Settings: 1 = yes, 0 = no															*/
 	
-	--background:					url(https://mwittrien.github.io/BetterDiscordAddons/Themes/BasicBackground/_res/background.jpg);	/* general background image				*/
+	--background:					url(https://images2.alphacoders.com/925/925917.png);	/* general background image				*/
 	--backgroundposition:			center;						/* default: center				(position of background - values: [center/top/right/bottom/left])				*/
 	--backgroundsize:				cover;						/* default: cover				(sizefit of background - values: [cover/contain/auto])							*/
 	--backgroundblur:				unset;						/* default: unset				(blur in px, only works when --background is set to an image)					*/
@@ -52,4 +57,187 @@
 	--textdarkest: 					90,90,90;					/* default: 90,90,90			(text color for the darkest texts)												*/
 	
 	--version1_0_5:					none;						/* DO NOT CHANGE THIS VARIABLE , USED TO HIDE UPDATE NOTICE														*/
+
+	--window-padding:				12px;
+	--window-roundness: 			12px;
+
+	--TB-top: 						calc(var(--server-container) + var(--window-padding));
+	--TB-tr-roundness: 				var(--window-roundness);
+	--TB-position-top: 				var(--TB-top, var(--window-padding));
+	--TB-position-right: 			var(--window-padding);
+}
+
+/* Padding around window */
+#app-mount .layer-86YKbF {
+	top: var(--window-padding);
+	right: var(--window-padding);
+	bottom: var(--window-padding);
+	left: var(--window-padding);
+	padding-top: 0;
+	overflow: hidden;
+	border-radius: var(--window-roundness);
+}
+
+
+/* Funny shadow at the top */
+#app-mount .base-2jDfDU::before {
+	content: "";
+	position: absolute;
+	height: 5px;
+	width: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
+	z-index: 1;
+	top: 48px;
+	pointer-events: none;
+	-webkit-user-select: none;
+		-moz-user-select: none;
+			user-select: none;
+}
+
+/* ----		14.2.	USERPOPOUT						---- */
+
+.userPopoutOuter-1OHwPL {									/* popout				container							*/
+	box-shadow: 0 0 0 1px rgba(var(--transparencycolor), .3), 0 2px 10px 0 rgba(var(--transparencycolor), .3);
+}
+.userProfileOuterUnthemed-11rPfA {							/* popout				container							*/
+	background: transparent;
+}
+.userProfileOuterUnthemed-11rPfA::before,
+.userProfileOuterUnthemed-11rPfA::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	width: unset;
+	height: unset;
+	border-radius: 5px;
+	pointer-events: none;
+	z-index: -1;
+}
+.userProfileOuterUnthemed-11rPfA::before {
+	background: var(--popout) var(--popoutposition)/var(--popoutsize);
+	background-attachment: fixed;
+}
+.userProfileOuterUnthemed-11rPfA::after {
+	background-color: rgba(var(--transparencycolor), calc(var(--transparencyalpha) + 0.25));
+	backdrop-filter: blur(var(--popoutblur));
+}
+.accountProfilePopoutWrapper-3GskID .overlayBackground-2aa7wt {
+	display: block !important;
+}
+.profileColors-2AgAV4 {										/* popout				profilecolors						*/
+	--profile-body-background-color: rgba(0,0,0,.4) !important;
+	--profile-body-divider-color: var(--background-modifier-accent) !important;
+	--profile-body-divider-opacity: 1 !important;
+}
+#app-mount .userProfileOuterThemed-2BgJCM ::-webkit-scrollbar-thumb {
+	background-color: var(--profile-gradient-secondary-color) !important;
+}
+.userProfileInnerThemed-3dLhGM::after {
+	content: "";
+	position: absolute;
+	display: block;
+	background: var(--profile-gradient-primary-color);
+	top: 4px;
+	right: 4px;
+	left: 4px;
+	height: 60px;
+	z-index: 1;
+}
+.userProfileInnerThemed-3dLhGM::before {
+	z-index: 2;
+}
+.userProfileInnerThemed-3dLhGM > * {
+	z-index: 3;
+}
+.userProfileInnerThemedWithBanner-25XGmz::after {
+	height: 120px;
+}
+.userProfileInner-1ngKnf {									/* popout				inner								*/
+	border-radius: 4px;
+}
+.userPopoutOuter-1OHwPL .wrapper-3Un6-K,					/* popout				avatar								*/
+.userPopoutOuter-1OHwPL .avatarWrapper {					/* popout				status everywhere					*/
+	background-color: transparent;
+	border-color: transparent;
+	box-sizing: content-box;
+}
+
+.root-jbEB5E {												/* body					roles								*/
+	max-height: 100px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+#app-mount .root-jbEB5E::-webkit-scrollbar {
+	width: 4px;
+}
+#app-mount .role-2TIOKu {									/* body					role								*/
+	border-color: rgba(var(--textbrighter), .6);
+	border-radius: 5px;
+	padding: 0 5px;
+	position: relative;
+}
+#app-mount .role-2TIOKu[style*="border-color: rgba(185, 187, 190, .6)"] {
+	border-color: rgba(var(--textbrighter), .6) !important;
+}
+#app-mount .rolePillBorder-RiRiuN:not(.actionButton-1YKTU0) {
+	border-width: 0;
+}
+#app-mount .role-2TIOKu .roleName-2ZJJYR {					/* body					rolename							*/
+	position: relative;
+	color: rgb(var(--textbrightest));
+	height: 20px;
+	line-height: 20px;
+	margin: 0;
+	font-weight: normal;
+	z-index: 1000;
+	pointer-events: none;
+}
+#app-mount .role-2TIOKu .roleRemoveButton-17oXnT {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+#app-mount .role-2TIOKu .roleCircle-3TFUOr {				/* body					rolecircle							*/
+	position: absolute;
+	background-color: rgb(var(--textbrighter));
+	border-radius: 3px;
+	opacity: 0.3;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	left: 0;
+	top: 0;
+}
+#app-mount .role-2TIOKu .roleCircle-3TFUOr[style*="background-color: rgb(185, 187, 190)"] {
+	background-color: rgb(var(--textbrighter)) !important;
+}
+#app-mount .role-2TIOKu .roleCircle-3TFUOr:not(:only-child):hover {
+	opacity: 1;
+	z-index: 2000;
+	cursor: pointer;
+}
+#app-mount .role-2TIOKu .roleRemoveIcon-387wKV {
+	z-index: 2001;
+	pointer-events: none;
+}
+#app-mount .role-2TIOKu .roleIcon-29epUq {
+	z-index: 1;
+}
+
+.textarea-_59yqs:focus {									/* body					note 								*/
+	background-color: rgba(var(--transparencycolor), .2);
+}
+
+#app-mount .wumpusTooltip-15kPrN {
+	background-color: rgb(var(--accentcolor));
+	color: #fff;
+	text-shadow: 1px 1px var(--textshadow);
+}
+#app-mount .wumpusTooltip-15kPrN::after {
+	border-color: transparent rgb(var(--accentcolor)) transparent transparent;
 }
