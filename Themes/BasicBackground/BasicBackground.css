@@ -382,7 +382,7 @@ body::after {
 
 
 /* ~~~~		3.		TITLEBAR						~~~~ */
-
+/*
 .titleBar-3AIemB {
 	z-index: 5001;
 }
@@ -423,7 +423,7 @@ body::after {
 .winButtonMinMax-nT2Irc:hover {
 	background-color: rgba(var(--transparencycolor), .2);
 }
-
+*/
 
 /* ~~~~		4.		GUILDLIST						~~~~ */
 
@@ -7382,7 +7382,7 @@ html .typingindicator-folder {
 
 
 /* ~~~~		19.		UPDATENOTICE					~~~~ */
-
+/*
 html:only-child > head + body div.app-1BipOi > div.app-2CXKsg::before {
 	content: "Your Version of   BasicBackground   by DevilBro is outdated. Please download the newest Version:	https://mwittrien.github.io/downloader/?theme=BasicBackground" !important;
 	display: var(--version1_0_5, block) !important;
@@ -7415,7 +7415,7 @@ html:only-child > head + body div.app-1BipOi > div.app-2CXKsg::before {
 	z-index: 101 !important;
 	pointer-events: none !important;
 }
-
+*/
 
 /* ~~~~		20.		WATERMARK						~~~~ */
 
