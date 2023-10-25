@@ -28,9 +28,9 @@
 	--guildchanneltransparency:		0.15;						/* default: 0.15				(additional darkness for guild/channel list)									*/
 	--chatinputtransparency:		0.0;						/* default: 0.0					(additional darkness for chat input container)									*/
 	--memberlisttransparency:		0.0;						/* default: 0.0					(additional darkness for member list)											*/
-	--accentcolor:				190,78,180;					/* default: 190,78,180			(RGB-format - blurple: 88,101,242 bd-blue: 58,113,193)							*/
-	--linkcolor:				255,204,246;
-	
+	--accentcolor:					190,78,180;					/* default: 190,78,180			(RGB-format - blurple: 88,101,242 bd-blue: 58,113,193)							*/
+	--linkcolor:					255,204,246;
+
 	--font:							"gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;		/* font used in most places										*/
 	--textshadow:					transparent;				/* default: transparent			(textshadow for text ontop of accentcolor nodes, ONLY accepts a color, no px)	*/
 	--settingsicons:				1;							/* Use Settings Icons in User Settings: 1 = yes, 0 = no															*/
@@ -95,6 +95,24 @@
 			user-select: none;
 }
 
+
+/* TEXTAREA */
+.form-3gdLxP {												/* textarea				form								*/
+	background: rgba(var(--transparencycolor), var(--chatinputtransparency));
+	margin-top: 0;
+	padding-top: 8px;
+	border-top-right-radius: calc(8px * (1 - (var(--memberlisttransparency) / (var(--memberlisttransparency) + 0.00000000000000000000001))));
+	border-top-left-radius: calc(8px * (1 - (var(--guildchanneltransparency) / (var(--guildchanneltransparency) + 0.00000000000000000000001))));
+}
+
+
+.textArea-2CLwUE {
+	min-height: 45px;
+}
+
+/* #app-mount .scrollbar-3vVt8d::-webkit-scrollbar {
+	display:none;
+} */
 /* ----		14.2.	USERPOPOUT						---- */
 
 .userPopoutOuter-1OHwPL {									/* popout				container							*/
